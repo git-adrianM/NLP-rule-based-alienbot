@@ -5,8 +5,10 @@ import random
 class AlienBot:
   # potential negative responses
   negative_responses = ("no", "nope", "nah", "naw", "not a chance", "sorry")
+
   # keywords for exiting the conversation
   exit_commands = ("quit", "pause", "exit", "goodbye", "bye", "later")
+
   # random starter questions
   random_questions = (
         "Why are you here? ",
@@ -32,6 +34,7 @@ class AlienBot:
         print("Ok, have a nice Earth day!")
         return
     self.chat()
+
   # Define .make_exit() 
   def make_exit(self, reply):
     for word in self.exit_commands:
@@ -45,6 +48,7 @@ class AlienBot:
     reply = input(random.choice(self.random_questions)).lower()
     while not self.make_exit(reply):
         reply = input(self.match_reply(reply))
+
   # Define .match_reply() 
   def match_reply(self, reply):
     for intent, value in self.alienbabble.items():
@@ -56,8 +60,8 @@ class AlienBot:
                 return self.answer_why_intent()
             elif found_match and intent == 'cubed_intent':
                 return self.cubed_intent(found_match.groups()[0])
-            else:
-                return self.no_match_intent()
+    else:
+        return self.no_match_intent()
 
   # Define .describe_planet_intent():
   def describe_planet_intent(self):
@@ -72,7 +76,7 @@ class AlienBot:
   # Define .cubed_intent():
   def cubed_intent(self, number):
     cubed_number = int(number)**3
-    return f"The cube of NUMBER is {cubed_number}. Isn't that cool? "
+    return f"The cube of {number} is {cubed_number}. Isn't that cool? "
 
   # Define .no_match_intent():
   def no_match_intent(self):
