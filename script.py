@@ -64,7 +64,6 @@ class AlienBot:
     responses = ("My planet is a utopia of diverse organisms and species. ", "I am from Opidipus, the capital of the Wayward Galaxies. ")
     return random.choice(responses)
 
-
   # Define .answer_why_intent():
   def answer_why_intent(self):
     responses = ("I come in peace.","I am here to collect data on your planet and its inhabitants.", "I heard the coffee is good. ")
